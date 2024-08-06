@@ -1,0 +1,133 @@
+.notesApp {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.notesHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.title {
+    margin: 0;
+}
+
+.refreshIcon {
+    cursor: pointer;
+    font-size: 24px;
+    color: green;
+}
+
+.signature {
+    margin: 0;
+    font-size: 14px;
+}
+
+.notesForm {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.labelInput {
+    position: absolute;
+    top: -20px;
+    font-size: 12px;
+    color: gray;
+}
+
+.input {
+  outline: none;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submitButton {
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: darkgreen;
+}
+
+.errorMessage {
+    color: red;
+    margin-bottom: 20px;
+}
+
+.notesList {
+    display: grid;
+    gap: 10px;
+}
+
+.notesTitle {
+    margin: 0;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.noteContent {
+    margin: 0;
+    font-size: 14px;
+}
+
+.deleteButton {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.deleteIcon {
+    background-color: white;
+    color: red;
+}
+
+.deleteIcon:hover {
+    color: darkred;
+}
+
+.loaderOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loader {
+    color: white;
+    font-size: 24px;
+}
