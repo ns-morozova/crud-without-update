@@ -51,11 +51,16 @@ class NotesApp extends Component<object, NotesAppState> {
             return;
         }
         try {
-            await axios.post(`${this.state.URL}/notes`, {
+            const response = await axios.post(`${this.state.URL}/notes`, {
                 id: 0,
                 content: newNoteContent,
             });
-            this.setState({ newNoteContent: '' });
+            const newNote = { id: response.data.id, content: newNoteContent };
+            this.setState((prevState) => ({
+                notes: [...prevState.notes, newNote],
+                newNoteContent: '',
+                errorMessage: '',
+            }));
         } catch (error) {
             this.setState({ errorMessage: 'Error adding note' });
             console.error(error);
@@ -65,6 +70,10 @@ class NotesApp extends Component<object, NotesAppState> {
     handleDeleteNote = async (id: number) => {
         try {
             await axios.delete(`${this.state.URL}/notes/${id}`);
+            this.setState((prevState) => ({
+                notes: prevState.notes.filter(note => note.id !== id),
+                errorMessage: '',
+            }));
         } catch (error) {
             this.setState({ errorMessage: 'Error deleting note' });
             console.error(error);
@@ -89,7 +98,7 @@ class NotesApp extends Component<object, NotesAppState> {
                     <h1 className={styles.title}>Notes</h1>
                     <FiRefreshCw onClick={this.fetchNotes} className={styles.refreshIcon} />
                 </header>
-                <p className={styles.signature}>refresh to see the current list of notes</p>
+                <p className={styles.signature}>Refresh to see the current list of notes</p>
                 <div className={styles.notesForm}>
                     <label htmlFor="enter" className={styles.labelInput}>New Note</label>
                     <input
